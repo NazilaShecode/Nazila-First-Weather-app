@@ -55,3 +55,11 @@ strong{
     position: relative;
     min-height: 100vh;
 }
+.weather-temperature .active {
+    color: #0A58D4;
+    cursor: default;
+}
+
+.weather-temperature .active:hover {
+    text-decoration: none;
+}

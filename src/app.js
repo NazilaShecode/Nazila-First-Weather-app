@@ -14,7 +14,6 @@ function formatDate(timestamo){
 }
 
 function displayTemprature(response) {
-    console.log(response.data);
 
     let temperatureElement = document.querySelector("#temperature");
     let cityElement = document.querySelector("#city");
@@ -24,7 +23,9 @@ function displayTemprature(response) {
     let dateElement = document.querySelector("#date");
     let iconElement = document.querySelector("#icon");
 
-    temperatureElement.innerHTML = Math.round(response.data.main.temp);
+    celsiusTemperature = response.data.main.temp;
+
+    temperatureElement.innerHTML = Math.round(celsiusTemperature);
     cityElement.innerHTML = response.data.name;
     descriptionElement.innerHTML = response.data.weather[0].description;
     humidityElement.innerHTML = response.data.main.humidity;
@@ -46,7 +47,30 @@ function displayTemprature(response) {
         searchDefault(cityInputElement.value);
     }
     
-    searchDefault("Yazd");
+    function showFarenheit(event) {
+        event.preventDefault();
+        let temperatureElement = document.querySelector("#temperature");
+        celsiusLink.classList.remove("active");
+        farenheitLink.classList.add("active");
+        let farenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+        temperatureElement.innerHTML = Math.round(farenheitTemperature);
+    }
+    function displayCelsiusTemperature(event) {
+        event.preventDefault();
+        celsiusLink.classList.add("active"); 
+        farenheitLink.classList.remove("active");
+        let temperatureElement = document.querySelector("#temperature");
+        temperatureElement.innerHTML = Math.round(celsiusTemperature);
+    }
+    let celsiusTemperature = null;
 
     let form = document.querySelector("#search-form");
     form.addEventListener("submit", subCity);
+
+    let farenheitLink = document.querySelector("#farenheit-link");
+    farenheitLink.addEventListener("click", showFarenheit);
+
+    let celsiusLink = document.querySelector("#celsius-link");
+    celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+    searchDefault("Yazd");
