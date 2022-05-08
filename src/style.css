@@ -77,6 +77,28 @@ strong{
     text-decoration: none;
 }
 
+.weather_forcast{
+    margin-top: 20px;
+    text-align: center;
+    color: darkblue;
+}
+
+.weather-forcast-date{
+    font-size: 16px;
+
+    opacity: 0.5 ;
+}
+
+
+.wearher-forecast-temperature-min{
+    font-size: 16px;
+    opacity: 0.5;
+}
+
+.weather-forecast-temperatures{
+    font-size: 15px;
+}
+
 .producer {
     text-align: center;
     margin: 20px;
